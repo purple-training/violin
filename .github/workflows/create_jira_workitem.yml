@@ -14,7 +14,7 @@ jobs:
         JIRA_AUTH_TYPE: basic
     steps:
       - name: jira init
-      - run: jira init \
+        run: jira init \
              --installation cloud \
              --login ${{ secrets.JIRA_USER_EMAIL }} \
              --server ${{ secrets.JIRA_BASE_URL }} \
