@@ -16,7 +16,7 @@ jobs:
       - name: env
         run: env
       - name: jira init
-        run: |
+        run: >
             jira init
             --installation cloud
             --login ${{ secrets.JIRA_USER_EMAIL }}
