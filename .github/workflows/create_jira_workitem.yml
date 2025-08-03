@@ -22,30 +22,14 @@ jobs:
             and things
       - name: jira init
         run: |
-            jira init \
-              --installation cloud \
-              --login ${{ secrets.JIRA_USER_EMAIL }} \
-              --server ${{ secrets.JIRA_BASE_URL }} \
-              --project ${{ secrets.JIRA_PROJECT_KEY }} \
-              --board None
-
-# - name: Create Jira Issue
-#   uses: atlassian/gajira-create@v3
-#   with:
-#     project: ${{ secrets.JIRA_PROJECT_KEY }}
-#     issuetype: Task
-#     summary: Github - ${{ github.event.issue.title }}
-#     description: |
-#       GitHub Issue: ${{ github.event.issue.html_url }}
-      
-#       ${{ github.event.issue.body }}
-#     fields: |
-#       {
-#         "labels": ["github-issue"],
-#         "priority": {"name": "Medium"}
-#       }
-#   env:
-#     JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-#     JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-#     JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-#     JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
+          jira init \
+            --installation cloud \
+            --login ${{ secrets.JIRA_USER_EMAIL }} \
+            --server ${{ secrets.JIRA_BASE_URL }} \
+            --project ${{ secrets.JIRA_PROJECT_KEY }} \
+            --board None
+      - name: create jira work item
+        run: |
+          jira issue create -tBug -lbug --no-input \
+            -s"Github - ${{ github.event.issue.title }}" \
+            -b"${{ github.event.issue.body }}"
