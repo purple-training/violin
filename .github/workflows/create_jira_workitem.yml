@@ -16,12 +16,13 @@ jobs:
       - name: env
         run: env
       - name: jira init
-        run: jira init \
-             --installation cloud \
-             --login ${{ secrets.JIRA_USER_EMAIL }} \
-             --server ${{ secrets.JIRA_BASE_URL }} \
-             --project ${{ secrets.JIRA_PROJECT_KEY }} \
-             --board None
+        run: |
+            jira init
+            --installation cloud
+            --login ${{ secrets.JIRA_USER_EMAIL }}
+            --server ${{ secrets.JIRA_BASE_URL }}
+            --project ${{ secrets.JIRA_PROJECT_KEY }}
+            --board None
 
 # - name: Create Jira Issue
 #   uses: atlassian/gajira-create@v3
