@@ -17,22 +17,17 @@ jobs:
         run: env
       - name: echo1
         run: |
-          echo
-          hello world
-          and things
-      - name: echo2
-        run: >
-          echo
-          hello world
-          and things?
+          echo \
+            hello world \
+            and things
       - name: jira init
-        run: >
-            jira init
-            --installation cloud
-            --login ${{ secrets.JIRA_USER_EMAIL }}
-            --server ${{ secrets.JIRA_BASE_URL }}
-            --project ${{ secrets.JIRA_PROJECT_KEY }}
-            --board None
+        run: |
+            jira init \
+              --installation cloud \
+              --login ${{ secrets.JIRA_USER_EMAIL }} \
+              --server ${{ secrets.JIRA_BASE_URL }} \
+              --project ${{ secrets.JIRA_PROJECT_KEY }} \
+              --board None
 
 # - name: Create Jira Issue
 #   uses: atlassian/gajira-create@v3
