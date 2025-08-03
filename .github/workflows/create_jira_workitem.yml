@@ -11,11 +11,12 @@ jobs:
       image: ghcr.io/ankitpokhrel/jira-cli:latest
       env:
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        JIRA_AUTH_TYPE: basic
     steps:
       - name: jira init
       - run: jira init \
              --installation cloud \
-             --login ${{ secrets.JIRA_BASE_URL }} \
+             --login ${{ secrets.JIRA_USER_EMAIL }} \
              --server ${{ secrets.JIRA_BASE_URL }} \
              --project ${{ secrets.JIRA_PROJECT_KEY }} \
              --board None
