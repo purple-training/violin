@@ -31,5 +31,5 @@ jobs:
       - name: create jira work item
         run: |
           jira issue create -tBug -lbug --no-input \
-            -s"github ${{ github.event.issue.number }}: ${{ github.event.issue.title }}" \
+            -s"github #${{ github.event.issue.number }}: ${{ github.event.issue.title }}" \
             -b" ${{ github.event.issue.body }}"
